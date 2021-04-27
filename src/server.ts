@@ -1,10 +1,10 @@
 import express, { Application, Router } from 'express';
 import bodyParser from 'body-parser';
-import allusers from './routers/UnstoppableRouter';
+import {checkeduserdomains } from './routers/UnstoppableRouter';
 import orderedrouter from './routers/orderedprodrouter';
 import productsrouter from './routers/productsRouter';
 import domainsrouter from './routers/domainsRouter';
-import ordersrouter from './routers/ordersRouter';
+import checkrouter from './routers/ordersRouter';
 import pool from './dbconfig/dbconnector';
 
 class Server {
@@ -29,12 +29,12 @@ class Server {
           });
     }
 
-    private routerConfig() {
+    public routerConfig() {
         this.app.use('/ordered', orderedrouter)
-        this.app.use('/users', allusers)
+        this.app.use('/users', checkeduserdomains)
         this.app.use('/products', productsrouter)
         this.app.use('/domains', domainsrouter)
-        this.app.use('/orders', ordersrouter)
+        this.app.use('/orders', checkrouter)
     }
 
     public start = (port: number) => {

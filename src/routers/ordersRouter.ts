@@ -1,9 +1,9 @@
 import express, { Router } from 'express';
-import {OrdersController,} from '../controllers/Controller';
-const ordersrouter = Router();
-const OrderController = new OrdersController();
+import {CheckUndercharedUser,} from '../controllers/Controller';
+const checkrouter = Router();
+const checkunder = new CheckUndercharedUser();
 
-ordersrouter.get('/', OrderController.get);
+checkrouter.get('/', checkunder.get);
 
 
-export = ordersrouter;
+export = checkrouter;

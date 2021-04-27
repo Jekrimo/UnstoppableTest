@@ -1,10 +1,9 @@
 import express, { Router } from 'express';
-import {UsersController,} from '../controllers/Controller';
+import {CheckUsersDomainsController} from '../controllers/Controller';
+import {User} from '../migrations/interfaces';
+import Server from '../server';
 const userrouter = Router();
-const GetUserController = new UsersController();
-
-const allusers = userrouter.get('/', GetUserController.get, function name(req, res) {
-  console.log(res, 'something')
-});
-
-export = allusers;
+const GetUserController = new CheckUsersDomainsController();
+const allusers = userrouter.get('/', GetUserController.get)
+// console.log(totalusers)
+export {allusers};
